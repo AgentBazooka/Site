@@ -1,63 +1,262 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <title>Sanskrit | Philosopher & Technologist</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #00ff9d;
+            --accent: #fff;
+        }
 
-    <section id="home">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Introduction and quick intro about you.</p>
-    </section>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>A short bio and your skills, tech stack, and experience.</p>
-    </section>
+        body {
+            background: var(--primary);
+            color: var(--accent);
+            line-height: 1.6;
+        }
 
-    <section id="projects">
-      <h2>My Projects</h2>
-      <div class="project">
-        <img src="assets/images/project1.jpg" alt="Project 1">
-        <h3>Project 1</h3>
-        <p>Description of the project and your role in it.</p>
-      </div>
-      <!-- Add more projects here -->
-    </section>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <form>
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
+        .header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--secondary), #0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" required></textarea>
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
 
-        <button type="submit">Send</button>
-      </form>
-    </section>
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+        }
 
-    <footer>
-      <p>&copy; 2025 Your Name</p>
-    </footer>
+        .nav a:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
 
-    <script src="assets/js/script.js"></script>
-  </body>
+        .section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .wiki {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .wiki-item {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .search-bar {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 300px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            border: none;
+            color: var(--accent);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 2rem;
+            z-index: 1000;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .admin-content {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 10px;
+            color: var(--accent);
+        }
+
+        .type-effect {
+            border-right: 2px solid var(--secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 1.5rem;
+        }
+
+        @keyframes type {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        . typing {
+            width: 0;
+            animation: type 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--secondary); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Sanskrit</h1>
+            <nav class="nav">
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#wiki">Wiki</a>
+            </nav>
+            <div class="type-effect">
+                Philosopher & Technologist
+            </div>
+        </header>
+
+        <section id="about" class="section">
+            <h2>About</h2>
+            <p>Exploring the intersection of philosophy and technology. Creator of innovative solutions and deep thinker.</p>
+        </section>
+
+        <section id="portfolio" class="section">
+            <h2>Portfolio</h2>
+            <div class="portfolio">
+                <div class="portfolio-item">
+                    <h3>Project 1</h3>
+                    <p>Innovative solution combining AI and philosophy</p>
+                </div>
+                <!-- Add more portfolio items -->
+            </div>
+        </section>
+
+        <section id="wiki" class="section">
+            <h2>Wiki & Notes</h2>
+            <div class="wiki">
+                <div class="wiki-item">
+                    <h3>Philosophical Musings</h3>
+                    <p>Exploring the nature of consciousness and technology</p>
+                </div>
+                <!-- Add more wiki items -->
+            </div>
+        </section>
+    </div>
+
+    <input type="password" class="search-bar" placeholder="Enter password for admin access">
+    <div class="admin-panel">
+        <div class="admin-content">
+            <h2>Admin Panel</h2>
+            <p>Content editing interface</p>
+            <button onclick="window.location.reload()">Refresh</button>
+        </div>
+    </div>
+
+    <script>
+        const password = "philotech"; // Change this to your secret password
+        const searchBar = document.querySelector('.search-bar');
+        const adminPanel = document.querySelector('.admin-panel');
+
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if (searchBar.value === password) {
+                    adminPanel.classList.add('active');
+                }
+            }
+        });
+
+        // Make all wiki and portfolio items editable in admin mode
+        window.addEventListener('DOMContentLoaded', () => {
+            if (adminPanel.classList.contains('active')) {
+                document.querySelectorAll('.portfolio-item, .wiki-item').forEach(item => {
+                    item.contentEditable = true;
+                });
+            }
+        });
+
+        // Save content to localStorage
+        document.addEventListener('blur', (e) => {
+            if (adminPanel.classList.contains('active')) {
+                const content = e.target.innerHTML;
+                const key = e.target.closest('.portfolio-item, .wiki-item').id || 'content';
+                localStorage.setItem(key, content);
+            }
+        });
+
+        // Load saved content
+        window.onload = () => {
+            document.querySelectorAll('.portfolio-item, .wiki-item').forEach(item => {
+                const savedContent = localStorage.getItem(item.id);
+                if (savedContent) {
+                    item.innerHTML = savedContent;
+                }
+            });
+        };
+    </script>
+</body>
 </html>
